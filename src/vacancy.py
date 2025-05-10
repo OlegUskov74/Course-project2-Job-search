@@ -6,6 +6,7 @@ class Vacancy:
     Класс для описания вакансии
 
     Атрибуты:
+        vacancy_id (int | str): Уникальный идентификатор вакансии.
         name (str): Название вакансии.
         url (str): Ссылка на вакансию.
         salary_from (float): Нижняя граница зарплаты.
@@ -17,6 +18,7 @@ class Vacancy:
         experience (str): Требуемый опыт работы.
     """
     __slots__ = (
+        "vacancy_id",
         "name",
         "url",
         "salary_from",
@@ -27,6 +29,7 @@ class Vacancy:
         "employment",
         "experience",
     )
+    vacancy_id: int
     name: str
     url: str
     salary: str
@@ -40,6 +43,7 @@ class Vacancy:
 
     def __init__(
             self,
+            vacancy_id,
             name,
             url,
             salary_from=0,
@@ -55,6 +59,7 @@ class Vacancy:
         self.__validate_url(url)
         self.__validate_salary(salary_from, salary_to)
 
+        self.vacancy_id = vacancy_id
         self.name = name
         self.url = url
         self.salary_from = float(salary_from)
@@ -135,6 +140,7 @@ class Vacancy:
         currency = salary_data.get("currency") or "RUB"
 
         return cls(
+            vacancy_id=vacancy_json.get("id", ""),
             name=vacancy_json.get("name", ""),
             url=vacancy_json.get("alternate_url", ""),
             salary_from=salary_from,
@@ -147,10 +153,24 @@ class Vacancy:
         )
         return vacancy
 
-
-
+    def to_dict(self) -> dict:
+        """Метод преобразует объект в словарь (для сохранения в JSON)."""
+        return {
+            "vacancy_id": self.vacancy_id,
+            "name": self.name,
+            "url": self.url,
+            "salary": self.salary,
+            "salary_from": self.salary_from,
+            "salary_to": self.salary_to,
+            "currency": self.currency,
+            "description": self.description,
+            "area": self.area,
+            "employment": self.employment,
+            "experience": self.experience
+        }
 # if __name__ == "__main__":
 #     vacancy1 = Vacancy(
+#         "93353083",
 #         "Тестировщик комфорта квартир",
 #         "https://hh.ru/vacancy/93353083",
 #         350000,
@@ -162,6 +182,7 @@ class Vacancy:
 #         "Нет опыта"
 #     )
 #     vacancy2 = Vacancy(
+#         "92223756",
 #         "Удаленный диспетчер чатов (в Яндекс)",
 #         "https://hh.ru/vacancy/92223756",
 #         33000,
@@ -175,3 +196,4 @@ class Vacancy:
 #
 #     print(vacancy1 > vacancy2)
 #     print(str(vacancy1))
+
