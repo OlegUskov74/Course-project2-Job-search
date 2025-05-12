@@ -99,7 +99,6 @@ class Vacancy:
             return NotImplemented
         return self.salary_comparison > other.salary_comparison
 
-
     @property
     def salary_comparison(self):
         """Метод для сравнения зарплаты"""
@@ -168,6 +167,7 @@ class Vacancy:
             "employment": self.employment,
             "experience": self.experience
         }
+
 # if __name__ == "__main__":
 #     vacancy1 = Vacancy(
 #         "93353083",
@@ -196,4 +196,3 @@ class Vacancy:
 #
 #     print(vacancy1 > vacancy2)
 #     print(str(vacancy1))
-
