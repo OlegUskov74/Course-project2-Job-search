@@ -1,0 +1,18 @@
+[
+    {
+        "vacancy_id": 1,
+        "name": "Python Dev",
+        "url": "http://url1",
+        "salary_from": 100000,
+        "salary_to": 150000,
+        "currency": "RUB"
+    },
+    {
+        "vacancy_id": 2,
+        "name": "Java Dev",
+        "url": "http://url2",
+        "salary_from": 80000,
+        "salary_to": 120000,
+        "currency": "RUB"
+    }
+]
