@@ -27,7 +27,7 @@ class HeadHunterAPI(BaseHeadHunterAPI):
 
         self.__params["text"] = keyword
         self.__params["page"] = 0
-        while self.__params.get("page") != 20:
+        while self.__params.get("page") != 2:
 
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             if response.status_code == 200:
@@ -40,6 +40,6 @@ class HeadHunterAPI(BaseHeadHunterAPI):
 # if __name__ == '__main__':
 #     hh_api = HeadHunterAPI()
 #     hh_vacancies = hh_api.load_vacancies("Python")
-#     vacancies_list = Vacancy.new_vacancies_json(hh_vacancies)
-#     print(vacancies_list)
+#     # vacancies_list = Vacancy.new_vacancies_json(hh_vacancies)
+#     # print(vacancies_list)
 #     print(hh_vacancies)

@@ -32,7 +32,6 @@ class Vacancy:
     vacancy_id: int
     name: str
     url: str
-    salary: str
     salary_from: float
     salary_to: float
     currency: str
@@ -78,8 +77,8 @@ class Vacancy:
             f"- Зарплата: {salary_str} "
             f"- Опыт работы: {self.experience} "
             f"- Описание: {self.description[:200]} "
-            f"- Подробнее по ссылке: {self.url}"
-        )
+            f"- Подробнее по ссылке: {self.url}")
+
 
     def __eq__(self, other):
         """Магический метод для равенства"""
@@ -107,7 +106,7 @@ class Vacancy:
     @staticmethod
     def __validate_string(name: str):
         """Метод валидации имени"""
-        if not isinstance(name, str):
+        if not name or not isinstance(name, str):
             raise ValueError("Не должно быть пустой строкой.")
 
     @staticmethod
@@ -158,7 +157,6 @@ class Vacancy:
             "vacancy_id": self.vacancy_id,
             "name": self.name,
             "url": self.url,
-            "salary": self.salary,
             "salary_from": self.salary_from,
             "salary_to": self.salary_to,
             "currency": self.currency,
